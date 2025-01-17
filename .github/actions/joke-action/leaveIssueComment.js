@@ -1,4 +1,5 @@
 const { repoToken, owner, repo, issueNumber } = getInputs();
+const request = require("request-promise");
 
 const octokit = new Octokit({
     auth: repoToken,
@@ -17,3 +18,5 @@ await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments
       'X-GitHub-Api-Version': '2022-11-28'
     }
   })
+
+module.exports = leaveIssueComment;
