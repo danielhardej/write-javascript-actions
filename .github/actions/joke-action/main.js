@@ -7,7 +7,8 @@ async function run() {
   const repo = core.getInput("repo");
   const issueNumber = core.getInput("issueNumber");
 
-  const joke = getJoke();
+  const joke = await getJoke();
+  console.log(joke); // Log the joke to the console to check it's working
 
   const { Octokit } = await import("@octokit/rest");
   const octokit = new Octokit({
