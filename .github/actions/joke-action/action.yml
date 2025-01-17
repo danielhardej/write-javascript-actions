@@ -2,6 +2,20 @@ name: "my joke action"
 
 description: "use an external API to retrieve and display a joke"
 
+inputs:
+  repoToken:
+    description: "The token to use to authenticate against the GitHub API"
+    required: true
+  owner:
+    description: "The owner of the repository where the issue is opened"
+    required: true
+  repo:
+    description: "The repository where the issue is opened"
+    required: true
+  issueNumber:
+    description: "The number of the issue to add a comment"
+    required: true
+
 outputs:
   joke-output:
     description: The resulting joke from the icanhazdadjokes API
