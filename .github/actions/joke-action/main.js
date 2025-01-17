@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const request = require("request-promise");
 const getJoke = require("./joke");
 const { Octokit } = require("@octokit/rest");
 
@@ -8,11 +7,10 @@ const owner = core.getInput("owner");
 const repo = core.getInput("repo");
 const issueNumber = core.getInput("issueNumber");
 
-
 const joke = await getJoke();
 
 const octokit = new Octokit({
-  auth: repoToken,
+  auth: repoToken
 })
 
 await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
