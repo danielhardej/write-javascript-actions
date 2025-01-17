@@ -1,12 +1,12 @@
 const { repoToken, owner, repo, issueNumber } = getInputs();
 const request = require("request-promise");
+const getJoke = require("./joke");
 
 const octokit = new Octokit({
     auth: repoToken,
   })
 
 
-const getJoke = require("./joke");
 const joke = await getJoke();
 
 await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
