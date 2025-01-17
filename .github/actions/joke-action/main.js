@@ -1,11 +1,11 @@
-import { getInput } from '@actions/core';
-import getJoke from "./joke";
-import { Octokit } from "@octokit/rest";
+const core = require('@actions/core');
+const getJoke = require("./joke");
+const { Octokit } = require("@octokit/rest");
 
-const repoToken = getInput("repoToken");
-const owner = getInput("owner");
-const repo = getInput("repo");
-const issueNumber = getInput("issueNumber");
+const repoToken = core.getInput("repoToken");
+const owner = core.getInput("owner");
+const repo = core.getInput("repo");
+const issueNumber = core.getInput("issueNumber");
 
 const joke = await getJoke();
 
