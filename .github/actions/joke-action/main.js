@@ -7,7 +7,7 @@ const owner = core.getInput("owner");
 const repo = core.getInput("repo");
 const issueNumber = core.getInput("issueNumber");
 
-const joke = await getJoke();
+const joke = getJoke();
 
 const octokit = new Octokit({
   auth: repoToken
