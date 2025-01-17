@@ -1,10 +1,19 @@
-const getJoke = require("./leaveIssueComment");
-const core = require("@actions/core");
+const { repoToken, owner, repo, issueNumber } = getInputs();
+const request = require("request-promise");
+const getJoke = require("./joke");
 
-async function run() {
-  // const joke = await getJoke();
-  // console.log(joke);
-  core.setOutput("joke-output", leaveIssueComment);
-}
+const octokit = new Octokit({
+    auth: repoToken,
+  })
 
-run();
+const joke = await getJoke();
+
+await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
+    owner: owner,
+    repo: repo,
+    issue_number: issueNumber,
+    body: joke,
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  })
