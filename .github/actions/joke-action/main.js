@@ -1,7 +1,5 @@
 const core = require('@actions/core');
 const getJoke = require("./joke");
-const { Octokit } = require("@octokit/rest");
-
 
 async function run() {
   const repoToken = core.getInput("repoToken");
@@ -11,6 +9,7 @@ async function run() {
 
   const joke = getJoke();
 
+  const { Octokit } = await import("@octokit/rest");
   const octokit = new Octokit({
     auth: repoToken
   })
