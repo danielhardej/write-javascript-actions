@@ -31,5 +31,5 @@ jobs:
           repoToken: ${{secrets.GITHUB_TOKEN}}
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
-          issueNumber: 1
+          issueNumber: ${{ github.event.issue.number }}
 
